@@ -5,4 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TweetRepository extends CrudRepository<Tweet,Long> {
+
+    Tweet findByText(String text);
 }

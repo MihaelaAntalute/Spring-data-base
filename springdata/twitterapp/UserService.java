@@ -21,9 +21,28 @@ public class UserService {
 
     //addTweetToUser
 
-    public User addTweetToUser(Tweet tweet, User user){
+    public User addTweetToUser(Tweet tweet, User user) {
         tweet.setUser(user);
         user.getTweets().add(tweet);
         return userRepository.save(user);
     }
+
+
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public void deleteUser (User user){
+        userRepository.delete(user);
+    }
+
+    public void removeTweetFromUser(Tweet tweet, User user){
+        user.getTweets().remove(tweet);
+        tweetRepository.delete(tweet);
+    }
+
+    public void deleteAllTweetsFromUser(User user){
+        tweetRepository.deleteAll(user.getTweets());
+    }
 }
+

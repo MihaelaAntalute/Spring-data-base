@@ -25,10 +25,13 @@ public class Runner implements CommandLineRunner {
         orderRepository.save(order2);
         orderRepository.save(order3);
 
+
         Order foundOrder = orderRepository.findById(1L).orElse(new Order());
         System.out.println(foundOrder);
         order3.setOrderStatus(OrderStatus.RECEIVED);
         orderRepository.save(order3);
+
+        System.out.println("JPQL "+orderRepository.findAllOrdersByOrderStatus(OrderStatus.PENDING));
 
         //orderRepository.delete(order2);
         //System.out.println(orderRepository.findAll());

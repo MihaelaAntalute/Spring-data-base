@@ -1,6 +1,8 @@
 package com.springdata.twitterapp;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Tweet {
@@ -15,6 +17,9 @@ public class Tweet {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(mappedBy = "tweet", cascade = CascadeType.ALL)
+    List<Comment> comments;
 
     public Tweet(String text) {
         this.text = text;
@@ -46,5 +51,16 @@ public class Tweet {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Comment> getComments() {
+        if (this.comments == null){
+            this.comments = new ArrayList<>();
+        }
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

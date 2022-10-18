@@ -7,6 +7,7 @@ import java.time.LocalDate;
 @Table(name="orders")
 public class Order {
 
+
     @Id
     @GeneratedValue
     private Long id;
@@ -74,4 +75,6 @@ public class Order {
                 ", orderProgress='" + orderProgress + '\'' +
                 '}';
     }
+
+
 }
