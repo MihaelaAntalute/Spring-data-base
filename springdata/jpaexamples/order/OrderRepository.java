@@ -1,20 +1,20 @@
-package com.springdata.jpaexamples;
+package com.springdata.jpaexamples.order;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface OrderRepository extends CrudRepository<Order,Long> {
+public interface OrderRepository extends JpaRepository<Order,Long> {
 
      Order findByOrderStatus(OrderStatus orderStatus);
      List<Order> findAllByOrderStatusIn(List<OrderStatus> orderStatusList);
-     Order findOrderByLocalDateBetween(LocalDate after, LocalDate before);
+     List<Order> findOrdersByLocalDateBetween(LocalDate after, LocalDate before);
      Order findOrderByProductTypeContainsAndLocalDateIsAfter(String productType, LocalDate after);
      List<Order> findTop3ByOrderByProductType();
 

@@ -1,4 +1,4 @@
-package com.springdata.jpaexamples;
+package com.springdata.jpaexamples.order;
 
 import javax.persistence.*;
 import java.time.LocalDate;
